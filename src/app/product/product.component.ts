@@ -1,35 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './product';
-
+import { AlertifyService } from '../services/alertify.service';
+import { HttpClient } from "@angular/common/http";
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
+  providers:[ProductService]
 })
 export class ProductComponent implements OnInit {
 
-  constructor() {
-    new Product()
-   }
-
-  ngOnInit(): void {
-  }
+  //Burada AlertifyService  için  Injection ı constructerda yapıyoruz. 
+  constructor(
+    private alertifyService: AlertifyService,
+    private   productService: ProductService ) {}
 
   title = "Product List"
   filterText = ""
+  products: Product[];
 
-  products : Product[] = [
-    {id:1, name : "Laptop", price : 2500, categoryId :1, description : "Asus ZenBook", imageUrl : "https://images-na.ssl-images-amazon.com/images/I/71h6PpGaz9L._AC_SL1500_.jpg"},
-   {id:2, name : "Mause", price : 2500, categoryId :1, description : "Asus ZenBook" , imageUrl : "https://images-na.ssl-images-amazon.com/images/I/71h6PpGaz9L._AC_SL1500_.jpg"},
-   {id:3, name : "Laptop", price : 2500, categoryId :1, description : "Asus ZenBook" , imageUrl : "https://images-na.ssl-images-amazon.com/images/I/71h6PpGaz9L._AC_SL1500_.jpg"},
-   {id:4, name : "Speaker", price : 2500, categoryId :1, description : "Asus ZenBook" , imageUrl : "https://images-na.ssl-images-amazon.com/images/I/71h6PpGaz9L._AC_SL1500_.jpg"},
-   {id:5, name : "Laptop", price : 2500, categoryId :1, description : "Asus ZenBook" , imageUrl : "https://images-na.ssl-images-amazon.com/images/I/71h6PpGaz9L._AC_SL1500_.jpg"},
-   {id:6, name : "Laptop", price : 2500, categoryId :1, description : "Asus ZenBook" , imageUrl : "https://images-na.ssl-images-amazon.com/images/I/71h6PpGaz9L._AC_SL1500_.jpg"},
-   {id:7, name : "Laptop", price : 2500, categoryId :1, description : "Asus ZenBook" , imageUrl : "https://images-na.ssl-images-amazon.com/images/I/71h6PpGaz9L._AC_SL1500_.jpg"},
-   {id:8, name : "Laptop", price : 2500, categoryId :1, description : "Asus ZenBook" , imageUrl : "https://images-na.ssl-images-amazon.com/images/I/71h6PpGaz9L._AC_SL1500_.jpg"}
+  // onInit metodu bu component ilk çağrıldığı anda çalışır. 
+  ngOnInit(): void {
+    this.getAllProducts()
+  }
 
-  ]
+  getAllProducts(){
+     this.productService.getProducts().subscribe(data =>
+      this.products=data)
+  }
+
+
+  addToCart(product: Product) {
+    this.alertifyService.success(product.name + " Added")
+  }
+
 }
+
 
 
