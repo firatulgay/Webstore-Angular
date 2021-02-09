@@ -3,6 +3,7 @@ import { Product } from './product';
 import { AlertifyService } from '../services/alertify.service';
 import { HttpClient } from "@angular/common/http";
 import { ProductService } from '../services/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -15,7 +16,8 @@ export class ProductComponent implements OnInit {
   //Burada AlertifyService  için  Injection ı constructerda yapıyoruz. 
   constructor(
     private alertifyService: AlertifyService,
-    private   productService: ProductService ) {}
+    private   productService: ProductService ,
+    private activatedRoot:ActivatedRoute) {}
 
   title = "Product List"
   filterText = ""
@@ -27,8 +29,11 @@ export class ProductComponent implements OnInit {
   }
 
   getAllProducts(){
-     this.productService.getProducts().subscribe(data =>
-      this.products=data)
+
+    this.activatedRoot.params.subscribe(params => {
+      this.productService.getProducts(params["categoryId"]).subscribe(data =>
+        this.products=data)
+    })
   }
 
 

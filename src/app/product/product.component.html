@@ -1,6 +1,9 @@
-<h3 *ngIf="products; else noProduct">{{title}}</h3><!--*ngIf eğer product varsa anlamına gelir(null kontrol). else ise ng-template i göster. -->
+<!-- <h3 *ngIf="products; else noProduct">{{title}}</h3> -->
+<!--*ngIf eğer product varsa anlamına gelir(null kontrol). else ise ng-template i göster. -->
 
-<form>                             <!-- Bu form yukarıdaki searchbox için koyduk -->              
+
+<app-category></app-category>
+<form>  <!-- Bu form yukarıdaki searchbox için koyduk -->              
     <div class="mb-3">
         <input class="form-control"
          id="productName" 
@@ -20,7 +23,7 @@
         </div>
     </ng-template>
 
-    <div *ngFor="let product of products | productFilter:filterText" class="card" style="width: 18rem;">
+    <div *ngFor="let product of products | productFilter:filterText" class="productbox"  style="width: 18rem;">
         <!--*ngFor angular döngü yapısı -->
         <img src="{{product.imageUrl}}" class="card-img-top" alt="...">
         <div class="card-body">

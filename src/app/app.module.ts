@@ -26,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';  // Backend ile http il
     FormsModule,
     HttpClientModule
   ],
-  providers: [AlertifyService], // global bir servis yaomak için buraya ekledik.
+  providers: [AlertifyService], // global bir servis yapmak için buraya ekledik.
   bootstrap: [AppComponent]
 })
 export class AppModule { }

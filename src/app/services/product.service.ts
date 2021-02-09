@@ -13,9 +13,15 @@ export class ProductService {
   path = "http://localhost:3000/products";
 
 
-  getProducts():Observable<Product[]>{
+  getProducts(categoryId:number):Observable<Product[]>{
+
+    let newPath = this.path;
+    if (categoryId) {
+      newPath += "?categoryId=" + categoryId
+    }
+
     return this.http
-    .get<Product[]>(this.path).pipe(  //bu pipe ile subscribe yapmadan önce loglama ve hata yakalama gibi operasyonlar yapabiliyoruz. tap() ve catchError() rxjs kütüphanesinin metodları.
+    .get<Product[]>(newPath).pipe(  //bu pipe ile subscribe yapmadan önce loglama ve hata yakalama gibi operasyonlar yapabiliyoruz. tap() ve catchError() rxjs kütüphanesinin metodları.
         tap(data =>console.log(JSON.stringify(data))), //.get metodu burada bize bir Observable döner.  
         catchError(this.handleError));   
   }
