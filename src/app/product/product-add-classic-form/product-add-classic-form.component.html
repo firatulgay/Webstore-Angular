@@ -31,7 +31,7 @@
             name="categoryId" required>
             <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
         </select>
-        <div *ngIf="categoryId.invalid && categoryId.touched" class="alert alert-danger">Category is required! div
+        <div *ngIf="categoryId.invalid && categoryId.touched" class="alert alert-danger">Category is required!
         </div>
     </div>
 
