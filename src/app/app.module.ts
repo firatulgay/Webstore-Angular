@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,8 @@ import { ProductComponent } from './product/product.component';
 import { ProductFilterPipe } from './product/product-filter.pipe';
 import { AlertifyService } from './services/alertify.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductAddClassicFormComponent } from './product/product-add-classic-form/product-add-classic-form.component';  // Backend ile http iletişimi için bu modulü import ediyoruz.  
+import { ProductAddClassicFormComponent } from './product/product-add-classic-form/product-add-classic-form.component';
+import { ProductAddReactiveFormComponent } from './product/product-add-reactive-form/product-add-reactive-form.component';  // Backend ile http iletişimi için bu modulü import ediyoruz.  
 
 
 @NgModule({
@@ -20,13 +21,15 @@ import { ProductAddClassicFormComponent } from './product/product-add-classic-fo
     CategoryComponent,
     ProductComponent,
     ProductFilterPipe,
-    ProductAddClassicFormComponent
+    ProductAddClassicFormComponent,
+    ProductAddReactiveFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [AlertifyService], // global bir servis yapmak için buraya ekledik.
   bootstrap: [AppComponent]
