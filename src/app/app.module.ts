@@ -9,9 +9,10 @@ import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { ProductFilterPipe } from './product/product-filter.pipe';
 import { AlertifyService } from './services/alertify.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; // Backend ile http iletişimi için bu modulü import ediyoruz. 
 import { ProductAddClassicFormComponent } from './product/product-add-classic-form/product-add-classic-form.component';
-import { ProductAddReactiveFormComponent } from './product/product-add-reactive-form/product-add-reactive-form.component';  // Backend ile http iletişimi için bu modulü import ediyoruz.  
+import { ProductAddReactiveFormComponent } from './product/product-add-reactive-form/product-add-reactive-form.component';
+import { LoginComponent } from './login/login.component';   
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ProductAddReactiveFormComponent } from './product/product-add-reactive-
     ProductComponent,
     ProductFilterPipe,
     ProductAddClassicFormComponent,
-    ProductAddReactiveFormComponent
+    ProductAddReactiveFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
