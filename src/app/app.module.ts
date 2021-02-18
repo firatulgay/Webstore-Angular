@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http'; // Backend ile http ile
 import { ProductAddClassicFormComponent } from './product/product-add-classic-form/product-add-classic-form.component';
 import { ProductAddReactiveFormComponent } from './product/product-add-reactive-form/product-add-reactive-form.component';
 import { LoginComponent } from './login/login.component';   
+import { AccountService } from './services/account.service';
+import { LoginGuard } from './login/login.guard';
 
 
 @NgModule({
@@ -33,7 +35,7 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AlertifyService], // global bir servis yapmak için buraya ekledik.
+  providers: [AlertifyService,AccountService,LoginGuard], // global bir servis yapmak için buraya ekledik.
   bootstrap: [AppComponent]
 })
 export class AppModule { }

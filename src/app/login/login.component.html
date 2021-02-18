@@ -1,11 +1,15 @@
 
-  <form class="form-signin">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="form-signin">
+    <h3 class="headerText">LOGIN</h3>
+
     <div class="form-group">
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <input type="text" #userName="ngModel" [(ngModel)]="model.userName" name="userName" class="form-control" id="userName" aria-describedby="userHelp" placeholder="Username" required autofocus>
     </div>
+
     <div class="form-group">
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input type="password" #password="ngModel" [(ngModel)]="model.password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
     </div>
+
     <div class="form-group form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Remember me</label>

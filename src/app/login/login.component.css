@@ -45,3 +45,7 @@ body {
 .form-signin .submitBtn {
     width: 100%;
   }
+
+  .form-signin .headerText{
+    text-align: center;
+  }
